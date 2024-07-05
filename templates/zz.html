@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Page with Disabled Button</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- UHBFlag{Z_HTML_VERY_IMPORT_?_Z} -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <ul class="nav nav-tabs justify-content-center" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="showCardTab" data-toggle="tab" href="#cardTab">Card Tab</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="showLoginTab" data-toggle="tab" href="#loginTab">Login Tab</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="showFlagTab" data-toggle="tab" href="#flagTab">Flag Tab</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="showConsoleTab" data-toggle="tab" href="#consoleTab">Console Tab</a>
+            </li>
+        </ul>
+
+
+        <div class="tab-content mt-2">
+            <div class="tab-pane fade show active" id="cardTab">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">CAN YOU Enable THE BUTTON ? (HTML??????)</p>
+                                <button id="disabledButton" class="btn btn-primary" disabled>SHOW ME THE FLAG</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="loginTab">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Login <br> </h5>
+                                <p>( Can you Scip this Login Page ? JS?????)</p>
+                                <form id="loginForm">
+                                    <div class="form-group">
+                                        <label for="username">Username:</label>
+                                        <input type="text" class="form-control" id="username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password:</label>
+                                        <input type="password" class="form-control" id="password" name="password">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="flagTab">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="btn btn-primary" onclick="createFlag()">Send Network Request !!! (CHECK NETWORK IN BROWSER)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="consoleTab">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="btn btn-primary" onclick="logHiToConsole()">Send Flag to Console</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        function createFlag() {
+            var payloadFlag = atob('VUhCRmxhZ3tQYXlsb2FkXz9fX30=');
+
+            fetch('/reqcha', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        payloadFlag: payloadFlag,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server Response:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {});
+
+        function logHiToConsole() {
+            console.log('UHBFlag{?__Console?_WH_}');
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Winners</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add any additional styles here -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #007bff;
+        }
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+        }
+        
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        
+        td {
+            padding: 8px;
+        }
+        /* Style for the top 3 winners */
+        
+        tbody tr:nth-child(1) {
+            background-color: #ffc107;
+            /* Yellow background for the 1st winner */
+        }
+        
+        tbody tr:nth-child(2) {
+            background-color: #6c757d;
+            /* Gray background for the 2nd winner */
+            color: #ffffff;
+            /* White text for better visibility */
+        }
+        
+        tbody tr:nth-child(3) {
+            background-color: #dc3545;
+            /* Red background for the 3rd winner */
+            color: #ffffff;
+            /* White text for better visibility */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Top 10 Winners</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Total Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for winner in top_winners %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ winner[0] }}</td>
+                <td>{{ winner[1]|round(3) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
